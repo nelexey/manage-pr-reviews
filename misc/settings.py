@@ -23,5 +23,6 @@ class Settings(BaseSettings):
     @property
     def api_url(self) -> str:
         return f"http://{self.app_host}:{self.app_port}"
-    
+
+
 settings = Settings()

@@ -1,5 +1,7 @@
 from pydantic import BaseModel
+
 from .pull_requests import PullRequestShort
+
 
 class User(BaseModel):
     user_id: str
@@ -7,12 +9,15 @@ class User(BaseModel):
     team_name: str
     is_active: bool
 
+
 class SetIsActiveRequest(BaseModel):
     user_id: str
     is_active: bool
 
+
 class UserResponse(BaseModel):
     user: User
+
 
 class GetReviewResponse(BaseModel):
     user_id: str
