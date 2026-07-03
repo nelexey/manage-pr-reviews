@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class TeamStatsResponse(BaseModel):
     team_name: str
     total_users: int

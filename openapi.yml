@@ -228,6 +228,39 @@ paths:
                 properties:
                   user:
                     $ref: '#/components/schemas/User'
+
+  /users/massDeactivate:
+    post:
+      tags: [Users]
+      summary: Массово деактивировать пользователей и переназначить их PR
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [ user_ids ]
+              properties:
+                user_ids:
+                  type: array
+                  items:
+                    type: string
+            example:
+              user_ids: ["u1", "u2"]
+      responses:
+        '200':
+          description: Статус операции
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  reassigned_prs:
+                    type: integer
+                    example: 5
               example:
                 user:
                   user_id: u2

@@ -23,7 +23,7 @@ class PRServiceUser(HttpUser):
     def create_pr(self):
         if not self.users:
             return
-            
+
         author = random.choice(self.users)
         pr_id = f"pr_{uuid.uuid4().hex[:8]}"
         response = self.client.post(
@@ -79,7 +79,7 @@ class PRServiceUser(HttpUser):
     def toggle_activity(self):
         if not self.users:
             return
-            
+
         user = random.choice(self.users)
         user["is_active"] = not user["is_active"]
 

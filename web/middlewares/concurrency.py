@@ -19,7 +19,7 @@ class ConcurrencyLimiterMiddleware(BaseHTTPMiddleware):
                 return response
             finally:
                 self.semaphore.release()
-        except asyncio.TimeoutError:
+        except TimeoutError:
             return JSONResponse(
                 status_code=429,
                 content={
