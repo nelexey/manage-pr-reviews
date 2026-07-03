@@ -6,6 +6,7 @@ from fastapi.responses import JSONResponse
 
 from database.main import db
 from misc.exceptions import AppError
+from web.middlewares.concurrency import ConcurrencyLimiterMiddleware
 
 from .urls import api_router
 
@@ -26,6 +27,9 @@ async def app_error_handler(request: Request, exc: AppError):
     return JSONResponse(
         status_code=exc.status_code, content={"error": {"code": exc.code, "message": exc.message}}
     )
+
+
+app.add_middleware(ConcurrencyLimiterMiddleware, max_concurrent_requests=100)
 
 
 app.add_middleware(
