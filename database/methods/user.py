@@ -54,7 +54,7 @@ async def get_candidate_reviewers(
     session: AsyncSession, team_name: str, exclude_user_ids: list[str]
 ) -> list[User]:
     stmt = select(User).where(
-        User.team_name == team_name, User.is_active == True, User.user_id.notin_(exclude_user_ids)
+        User.team_name == team_name, User.is_active.is_(True), User.user_id.notin_(exclude_user_ids)
     )
     result = await session.execute(stmt)
     return list(result.scalars().all())

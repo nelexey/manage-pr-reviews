@@ -15,13 +15,13 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-import os
-import sys
+import os  # noqa: E402
+import sys  # noqa: E402
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from database.models import Base
-from misc.settings import settings
+from database.models import Base  # noqa: E402
+from misc.settings import settings  # noqa: E402
 
 target_metadata = Base.metadata
 

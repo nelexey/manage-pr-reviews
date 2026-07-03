@@ -9,7 +9,7 @@ from sqlalchemy.sql import func
 from .base import Base
 
 
-class PRStatus(str, enum.Enum):
+class PRStatus(enum.StrEnum):
     OPEN = "OPEN"
     MERGED = "MERGED"
 
