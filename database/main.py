@@ -7,7 +7,13 @@ from misc.settings import settings
 
 class Database:
     def __init__(self, url: str):
-        self.engine = create_async_engine(url, pool_pre_ping=True, echo=True)
+        self.engine = create_async_engine(
+            url, 
+            pool_pre_ping=True, 
+            echo=False, 
+            pool_size=100, 
+            max_overflow=20
+        )
         self.session_factory = async_sessionmaker(
             bind=self.engine, class_=AsyncSession, expire_on_commit=False
         )
